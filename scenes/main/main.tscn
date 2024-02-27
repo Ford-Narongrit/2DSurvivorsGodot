@@ -1,17 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://cv2ii1mks5qi1"]
+[gd_scene load_steps=13 format=3 uid="uid://cv2ii1mks5qi1"]
 
 [ext_resource type="PackedScene" uid="uid://bn1cder6h4joj" path="res://scenes/game_object/game_camera/game_camera.tscn" id="1_2gkiy"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_efnrn"]
 [ext_resource type="PackedScene" uid="uid://c47m2pxhw0ks6" path="res://scenes/ui/arena_timer_ui.tscn" id="1_fauwj"]
 [ext_resource type="TileSet" uid="uid://ckslea6gshfsu" path="res://resources/tileset.tres" id="1_i2hcr"]
 [ext_resource type="PackedScene" uid="uid://dhbhyusje3vc4" path="res://scenes/game_object/player/player.tscn" id="1_jcbx4"]
 [ext_resource type="PackedScene" uid="uid://oerr2spxhn4i" path="res://scenes/manager/enemy_manager.tscn" id="1_n7fem"]
 [ext_resource type="PackedScene" uid="uid://cqqlf6i440k47" path="res://scenes/ui/experience_bar.tscn" id="2_0hih3"]
 [ext_resource type="PackedScene" uid="uid://1aldi67c6g85" path="res://scenes/manager/arena_time_manager.tscn" id="2_4ddkw"]
+[ext_resource type="PackedScene" uid="uid://ndrox6cv3pgn" path="res://scenes/ui/end_screen.tscn" id="2_fa8uk"]
 [ext_resource type="PackedScene" uid="uid://cxsf2mx2n0i25" path="res://scenes/manager/experience_manager.tscn" id="4_csrj2"]
 [ext_resource type="PackedScene" uid="uid://coig721pa06jc" path="res://scenes/manager/upgrade_manager.tscn" id="6_kuoxs"]
 [ext_resource type="PackedScene" uid="uid://dbhelposu4dy1" path="res://scenes/ui/upgrade_screen.tscn" id="7_1o0mx"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_efnrn")
+end_screen_scene = ExtResource("2_fa8uk")
 
 [node name="ArenaTimerUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_fauwj")]
 arena_time_manager = NodePath("../ArenaTimeManager")
@@ -40,6 +44,7 @@ layer_0/tile_data = PackedInt32Array(0, 0, 4, 1, 0, 4, 2, 0, 4, 3, 0, 4, 4, 0, 4
 y_sort_enabled = true
 
 [node name="Player" parent="Entities" instance=ExtResource("1_jcbx4")]
+unique_name_in_owner = true
 position = Vector2(458, 346)
 
 [node name="Foregound" type="Node2D" parent="." groups=["foreground_layer"]]
