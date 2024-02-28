@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.gd" id="1_fjyax"]
 [ext_resource type="PackedScene" uid="uid://b5di7em0g8tv5" path="res://scenes/ability/sword_ability/sword_ability.tscn" id="2_2e8ab"]
 
-[node name="SwordAbilityController" type="Node2D"]
+[node name="SwordAbilityController" type="Node"]
 script = ExtResource("1_fjyax")
 sword_ability = ExtResource("2_2e8ab")
 
