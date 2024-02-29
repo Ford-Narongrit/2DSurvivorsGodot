@@ -1,11 +1,75 @@
-[gd_scene load_steps=9 format=3 uid="uid://dru6bgmxd4ubm"]
+[gd_scene load_steps=14 format=3 uid="uid://dru6bgmxd4ubm"]
 
 [ext_resource type="Script" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_glddd"]
 [ext_resource type="Texture2D" uid="uid://b8h3vvipbv3ju" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_q2u7f"]
 [ext_resource type="PackedScene" uid="uid://gukrvnnpyuvm" path="res://scenes/component/health_component.tscn" id="2_upnv7"]
 [ext_resource type="PackedScene" uid="uid://cvlfw3brjv0ji" path="res://scenes/component/vial_drop_component.tscn" id="3_tfxrw"]
 [ext_resource type="PackedScene" uid="uid://bf3wrgfug76fe" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="4_2egte"]
+[ext_resource type="PackedScene" uid="uid://dti7d8y3b5sgn" path="res://scenes/component/death_component.tscn" id="5_2nmcv"]
+[ext_resource type="PackedScene" uid="uid://b1ig8y44acwdc" path="res://scenes/component/velocity_component.tscn" id="5_4gw7t"]
 [ext_resource type="PackedScene" uid="uid://eawijucotlm4" path="res://scenes/component/hurtbox_component.tscn" id="5_d3qs7"]
+
+[sub_resource type="Animation" id="Animation_2pyay"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4p3nr"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1, 2.08165e-12), Vector2(1, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.174533, -0.174533, 0.174533, -0.174533]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7fdc2"]
+_data = {
+"RESET": SubResource("Animation_2pyay"),
+"walk": SubResource("Animation_4p3nr")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwnb1"]
 radius = 12.0
@@ -19,11 +83,25 @@ collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_glddd")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7fdc2")
+}
+autoplay = "walk"
+
 [node name="HealthComponent" parent="." instance=ExtResource("2_upnv7")]
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_tfxrw")]
 vial_scene = ExtResource("4_2egte")
 health_component = NodePath("../HealthComponent")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("5_4gw7t")]
+max_speed = 30
+acceleration = 2.0
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_2nmcv")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_d3qs7")]
 health_component = NodePath("../HealthComponent")
@@ -32,7 +110,9 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_dwnb1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 texture = ExtResource("1_q2u7f")
 offset = Vector2(0, -4)
 
