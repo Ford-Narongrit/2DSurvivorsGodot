@@ -11,6 +11,8 @@ func _ready():
 
 
 func set_ability_upgrade(upgrade: AbilityUpgrade):
+	print("yo")
+	print(upgrade.id)
 	name_label.text = upgrade.name
 	description_lable.text = upgrade.description
 
