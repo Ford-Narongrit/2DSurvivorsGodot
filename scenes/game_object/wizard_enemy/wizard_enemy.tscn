@@ -28,9 +28,10 @@ max_health = 30.0
 max_speed = 80
 acceleration = 2.0
 
-[node name="VialDropComponent" parent="." instance=ExtResource("4_83lny")]
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_83lny")]
 drop_percent = 0.4
 vial_scene = ExtResource("5_20727")
+health_component = NodePath("../HealthComponent")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_o4hkl")]
 health_component = NodePath("../HealthComponent")
