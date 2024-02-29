@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dhbhyusje3vc4"]
+[gd_scene load_steps=14 format=3 uid="uid://dhbhyusje3vc4"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_iqvpu"]
 [ext_resource type="Script" path="res://scenes/component/health_component.gd" id="2_anq6t"]
@@ -98,17 +98,6 @@ resource_local_to_scene = true
 shader = ExtResource("4_5pji2")
 shader_parameter/lerp_percent = 0.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_158sn"]
-bg_color = Color(0.247059, 0.14902, 0.192157, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkuc5"]
-bg_color = Color(0.262745, 0.882353, 0.701961, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.247059, 0.14902, 0.192157, 1)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_yaqo3"]
 radius = 32.0
 
@@ -151,8 +140,6 @@ offset_top = -24.0
 offset_right = 16.0
 offset_bottom = -18.0
 pivot_offset = Vector2(16, 3)
-theme_override_styles/background = SubResource("StyleBoxFlat_158sn")
-theme_override_styles/fill = SubResource("StyleBoxFlat_fkuc5")
 max_value = 1.0
 value = 0.5
 show_percentage = false
