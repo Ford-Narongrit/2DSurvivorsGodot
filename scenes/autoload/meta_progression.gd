@@ -19,7 +19,6 @@ func load_save_file():
 		return
 	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
 	save_data = file.get_var()
-	print(save_data)
 
 
 func save_file():
