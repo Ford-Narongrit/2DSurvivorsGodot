@@ -51,3 +51,5 @@ func on_area_entered(other_area: Area2D):
 	tween.chain()
 	# do callback went all animation done.
 	tween.tween_callback(collect)
+	
+	$RandomStreamPlayer2DComponent.play_random()
