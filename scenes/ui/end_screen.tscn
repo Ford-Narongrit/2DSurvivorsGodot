@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ndrox6cv3pgn"]
+[gd_scene load_steps=7 format=3 uid="uid://ndrox6cv3pgn"]
 
 [ext_resource type="Script" path="res://scenes/ui/end_screen.gd" id="1_m1lpa"]
+[ext_resource type="PackedScene" uid="uid://cwtqc0rbiapor" path="res://scenes/ui/sound_button.tscn" id="2_w41m8"]
 
 [sub_resource type="Animation" id="Animation_r21xi"]
 length = 0.001
@@ -127,12 +128,12 @@ text = "You won!"
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="RestartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_w41m8")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Restart"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_w41m8")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit
