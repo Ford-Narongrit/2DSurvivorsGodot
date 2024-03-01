@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://djfrurov8g8ia"
+path="res://.godot/imported/Survivors Game Sound.mp3-b34e162db94666bb0fb6ccda33fff688.mp3str"
+
+[deps]
+
+source_file="res://assests/audio/Survivors Game Sound.mp3"
+dest_files=["res://.godot/imported/Survivors Game Sound.mp3-b34e162db94666bb0fb6ccda33fff688.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

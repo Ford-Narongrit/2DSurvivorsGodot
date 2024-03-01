@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://duedjh2higmpg"]
+
+[ext_resource type="AudioStream" uid="uid://djfrurov8g8ia" path="res://assests/audio/Survivors Game Sound.mp3" id="1_7ev7n"]
+[ext_resource type="Script" path="res://scenes/autoload/music_player.gd" id="2_amr8q"]
+
+[node name="musicPlayer" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_7ev7n")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("2_amr8q")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
