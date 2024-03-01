@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dru6bgmxd4ubm"]
+[gd_scene load_steps=23 format=3 uid="uid://dru6bgmxd4ubm"]
 
 [ext_resource type="Script" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_glddd"]
 [ext_resource type="Texture2D" uid="uid://b8h3vvipbv3ju" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_q2u7f"]
@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://b1ig8y44acwdc" path="res://scenes/component/velocity_component.tscn" id="5_4gw7t"]
 [ext_resource type="PackedScene" uid="uid://eawijucotlm4" path="res://scenes/component/hurtbox_component.tscn" id="5_d3qs7"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="7_3avow"]
+[ext_resource type="AudioStream" uid="uid://ta4nky4fv3hg" path="res://assests/audio/footstep_carpet_000.ogg" id="11_vk1kp"]
+[ext_resource type="PackedScene" uid="uid://bivvvsy2lsehd" path="res://scenes/component/random_stream_player_2d_component.tscn" id="11_xs0ps"]
+[ext_resource type="AudioStream" uid="uid://bxmyv3w5udase" path="res://assests/audio/footstep_carpet_001.ogg" id="13_koudv"]
+[ext_resource type="AudioStream" uid="uid://bkjnkf0fgcsl5" path="res://assests/audio/footstep_carpet_002.ogg" id="14_rp3ww"]
+[ext_resource type="AudioStream" uid="uid://bi3jy30q7guw0" path="res://assests/audio/footstep_carpet_003.ogg" id="15_33hoa"]
+[ext_resource type="AudioStream" uid="uid://dnlmfhhfg1qje" path="res://assests/audio/footstep_carpet_004.ogg" id="16_rjd07"]
 
 [sub_resource type="Animation" id="Animation_2pyay"]
 length = 0.001
@@ -115,6 +121,9 @@ hit_flash_material = SubResource("ShaderMaterial_1l5p1")
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_2nmcv")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="HitRandomAudioPlayer2DComponent" parent="." instance=ExtResource("11_xs0ps")]
+streams = Array[AudioStream]([ExtResource("11_vk1kp"), ExtResource("13_koudv"), ExtResource("14_rp3ww"), ExtResource("15_33hoa"), ExtResource("16_rjd07")])
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_d3qs7")]
 health_component = NodePath("../HealthComponent")
