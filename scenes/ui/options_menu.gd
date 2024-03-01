@@ -54,4 +54,6 @@ func on_window_button_pressed():
 
 
 func on_back_button_pressed():
+	ScreenTransition.transition()
+	await ScreenTransition.transitioned_halfway
 	back_pressed.emit()
