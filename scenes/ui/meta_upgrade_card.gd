@@ -36,6 +36,7 @@ func update_progress():
 	percent = min(percent,1)
 	progress_bar.value = percent
 	purchase_button.disabled = percent < 1 || is_maxed
+	purchase_button.disabled = percent < 1 || is_maxed
 	
 	if is_maxed:
 		purchase_button.text = "Max"
