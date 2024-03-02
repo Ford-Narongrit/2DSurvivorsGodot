@@ -13,7 +13,7 @@ func _ready():
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	
 	get_tree().paused = true
-	$%RestartButton.pressed.connect(on_restart_button_pressed)
+	$%ContinueButton.pressed.connect(on_continue_button_pressed)
 	$%QuitButton.pressed.connect(on_quit_button_pressed)
 
 
@@ -30,7 +30,7 @@ func play_end_sound():
 		$DefeatStreamPlayer.play()
 
 
-func on_restart_button_pressed():
+func on_continue_button_pressed():
 	ScreenTransition.transition()
 	await ScreenTransition.transitioned_halfway
 	
