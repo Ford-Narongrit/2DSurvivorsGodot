@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_iqvpu"]
 [ext_resource type="Script" path="res://scenes/component/health_component.gd" id="2_anq6t"]
 [ext_resource type="Texture2D" uid="uid://drqndfmq7a7f3" path="res://scenes/game_object/player/player.png" id="2_ww5dw"]
-[ext_resource type="PackedScene" uid="uid://bdgi8ud0i6rhp" path="res://scenes/component/hit_flash_component.tscn" id="3_0vfve"]
+[ext_resource type="PackedScene" path="res://scenes/component/hit_flash_component.tscn" id="3_0vfve"]
 [ext_resource type="PackedScene" uid="uid://dgpl75gcci1es" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="3_1hyu7"]
-[ext_resource type="PackedScene" uid="uid://b1ig8y44acwdc" path="res://scenes/component/velocity_component.tscn" id="3_c5opr"]
+[ext_resource type="PackedScene" path="res://scenes/component/velocity_component.tscn" id="3_c5opr"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="4_5pji2"]
 [ext_resource type="PackedScene" uid="uid://bivvvsy2lsehd" path="res://scenes/component/random_stream_player_2d_component.tscn" id="7_brbbm"]
 [ext_resource type="AudioStream" uid="uid://btsabgjx0mvja" path="res://assests/audio/impactMining_000.ogg" id="8_3w1h1"]
@@ -128,7 +128,7 @@ libraries = {
 script = ExtResource("2_anq6t")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_c5opr")]
-max_speed = 90
+max_speed = 70
 acceleration = 25.0
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("healthComponent", "sprite") instance=ExtResource("3_0vfve")]
