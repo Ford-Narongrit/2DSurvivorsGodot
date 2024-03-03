@@ -6,6 +6,6 @@
 script = ExtResource("1_m8unc")
 id = "health_regeneration"
 max_quantity = 3
-experience_cost = 1
+experience_cost = 120
 title = "Health Regen"
 description = "Out of combat in last 8 second, player regen 1 health per upgrades each second."
