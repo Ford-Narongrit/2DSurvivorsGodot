@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_t24k8")
 id = "anvil_amount"
-max_quantity = 2
+max_quantity = 0
 name = "Anvil Rain"
 description = "Adds 1 additional anvil."
