@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://b5v72f3efmrcd"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrade/meta_upgrade.gd" id="1_m8unc"]
+
+[resource]
+script = ExtResource("1_m8unc")
+id = "health_regeneration"
+max_quantity = 3
+experience_cost = 1
+title = "Health Regen"
+description = "Out of combat in last 8 second, player regen 1 health per upgrades each second."

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var health_regen_delay_timer = $HealthRegenDelayTimer
+@onready var before_health_regen_timer = $BeforeHealthRegenTimer
 @onready var damage_interval_timer = $DamageIntervalTimer
 @onready var health_component = $HealthComponent
 @onready var health_bar = $HealthBar
@@ -16,8 +18,14 @@ func _ready():
 	
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
+	
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
+	before_health_regen_timer.timeout.connect(on_before_health_regen_timer_timout)
+	health_regen_delay_timer.timeout.connect(on_health_regen_delay_timer_timeout)
+	
+	health_component.health_decreased.connect(on_health_decreased)
 	health_component.health_changed.connect(on_health_changed)
+	health_component.health_increased.connect(on_health_increased)
 	
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	
@@ -52,6 +60,16 @@ func check_deal_damage():
 	damage_interval_timer.start()
 
 
+func check_heal():
+	if not before_health_regen_timer.is_stopped():
+		health_regen_delay_timer.stop()
+		return
+	var health_regenertaion_quantity = MetaProgression.get_upgrade_count("health_regeneration")
+	if health_regenertaion_quantity > 0:
+		health_component.heal(health_regenertaion_quantity)
+		health_regen_delay_timer.start()
+
+
 func update_health_display():
 		health_bar.value = health_component.get_health_percent()
 
@@ -68,10 +86,27 @@ func on_damage_interval_timer_timeout():
 	check_deal_damage()
 
 
-func on_health_changed():
+func on_before_health_regen_timer_timout():
+	check_heal()
+
+
+func on_health_regen_delay_timer_timeout():
+	check_heal()
+
+
+func on_health_decreased():
 	GameEvents.emit_player_damage()
-	update_health_display()
+	before_health_regen_timer.start()
 	$HitRandomAudioPlayer2DComponent.play_random()
+
+
+func on_health_increased():
+	GameEvents.emit_player_heal()
+
+
+func on_health_changed():
+	update_health_display()
+
 
 func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	if ability_upgrade is Ability:

@@ -147,6 +147,13 @@ streams = Array[AudioStream]([ExtResource("8_3w1h1"), ExtResource("9_qaymh"), Ex
 wait_time = 0.5
 one_shot = true
 
+[node name="BeforeHealthRegenTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="HealthRegenDelayTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(32, 6)
 offset_left = -16.0

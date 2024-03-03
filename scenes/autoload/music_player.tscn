@@ -10,6 +10,3 @@ volume_db = -10.0
 autoplay = true
 bus = &"Music"
 script = ExtResource("2_amr8q")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
